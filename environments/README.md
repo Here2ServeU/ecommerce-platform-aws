@@ -1,6 +1,6 @@
 # E-commerce Platform Deployment with Terraform on AWS
 
-This guide provides step-by-step instructions to set up an e-commerce platform on Amazon Web Services (AWS) using Terraform. The deployment leverages various AWS services to create a scalable, secure, and efficient infrastructure.
+This guide provides step-by-step instructions on how to set up an e-commerce platform on Amazon Web Services (AWS) using Terraform. The deployment leverages various AWS services to create a scalable, secure, and efficient infrastructure.
 
 ---
 ## Prerequisites
@@ -140,13 +140,13 @@ After you complete it, please verify through the AWS Management Console or AWS C
 Implementing robust security measures is crucial for protecting your e-commerce platform in a production environment. Leveraging AWS services, you can establish a secure and compliant infrastructure by adhering to the following best practices:
 
 #### 1. Identity and Access Management (IAM):
-- Principle of Least Privilege: Assign users and services only the permissions necessary to perform their tasks, minimizing potential attack vectors.
-- Multi-Factor Authentication (MFA): Enforce MFA for all users, especially those with elevated privileges, to add an extra layer of security.
-- Regular Access Reviews: Periodically audit IAM roles and policies to ensure they align with current operational requirements and revoke unnecessary permissions.
+- **Principle of Least Privilege:** Assign users and services only the permissions necessary to perform their tasks, minimizing potential attack vectors.
+- **Multi-Factor Authentication (MFA):** Enforce MFA for all users, especially those with elevated privileges, to add an extra layer of security.
+- **Regular Access Reviews:** Periodically audit IAM roles and policies to ensure they align with current operational requirements and revoke unnecessary permissions.
 
 #### 2. Data Protection:
-- Encryption at Rest and in Transit: Utilize AWS Key Management Service (KMS) to encrypt sensitive data stored in services like Amazon S3, DynamoDB, and RDS. Ensure data transmitted between services and to end-users is encrypted using protocols such as TLS.
-- Regular Backups: Implement automated backups for critical data to facilitate recovery in case of data loss or corruption.
+- **Encryption at Rest and in Transit:** Utilize ***AWS Key Management Service (KMS) to encrypt sensitive data stored in services like Amazon S3, DynamoDB, and RDS. Ensure data transmitted between services and to end-users is encrypted using protocols such as TLS.
+- **Regular Backups:** Implement automated backups for critical data to facilitate recovery in case of data loss or corruption.
 
 #### 3. Network Security:
 - **Virtual Private Cloud (VPC):** Deploy resources within a VPC to isolate them from public networks, controlling inbound and outbound traffic through security groups and network ACLs.
@@ -163,8 +163,8 @@ Implementing robust security measures is crucial for protecting your e-commerce 
 - **Regular Security Assessments:** Conduct vulnerability assessments and penetration testing to identify and remediate security weaknesses.
 
 #### 6. Incident Response:
-- Preparation: Develop and regularly update an incident response plan outlining roles, responsibilities, and procedures for handling security incidents.
-- Automation: Implement automated responses to everyday security events using **AWS Lambda** and **AWS CloudFormation** to reduce reaction times.
+- **Preparation:** Develop and regularly update an incident response plan outlining roles, responsibilities, and procedures for handling security incidents.
+- **Automation:** Implement automated responses to everyday security events using AWS Lambda and AWS CloudFormation to reduce reaction times.
 
 #### 7. Secure Software Development:
 - **Code Reviews and Testing:** Incorporate security reviews and testing into the development lifecycle to identify vulnerabilities early.
@@ -172,4 +172,4 @@ Implementing robust security measures is crucial for protecting your e-commerce 
 
 By integrating these security practices, you can establish a resilient e-commerce platform that safeguards customer data and maintains trust. Please update your security measures regularly to adapt to evolving threats and ensure they comply with industry standards.
 
-Please look at the AWS Security Best Practices whitepaper for a comprehensive overview of AWS security best practices. ￼
+Please have a look at the AWS Security Best Practices whitepaper for a comprehensive overview of AWS security best practices. ￼
