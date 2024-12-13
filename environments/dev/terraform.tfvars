@@ -1,0 +1,7 @@
+aws_region = "us-east-1"
+bucket_name = "t2s-dev-frontend"
+dynamodb_table_name = "t2s-dev-table"
+lambda_iam_role_arn = "arn:aws:iam::123456789012:role/lambda-execution-role"
+rds_endpoint = "t2s-dev-db-endpoint"
+sns_topic_arn = "arn:aws:sns:us-east-1:123456789012:t2s-dev-topic"
+environment = "dev"
