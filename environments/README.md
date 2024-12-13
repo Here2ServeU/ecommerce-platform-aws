@@ -149,26 +149,26 @@ Implementing robust security measures is crucial for protecting your e-commerce 
 - Regular Backups: Implement automated backups for critical data to facilitate recovery in case of data loss or corruption.
 
 #### 3. Network Security:
-- Virtual Private Cloud (VPC): Deploy resources within a VPC to isolate them from public networks, controlling inbound and outbound traffic through security groups and network ACLs.
-- Web Application Firewall (WAF): Configure AWS WAF to protect your application from common web exploits and bots that may affect availability and security.
-- DDoS Protection: Leverage AWS Shield to safeguard against Distributed Denial of Service attacks, ensuring application availability.
+- **Virtual Private Cloud (VPC):** Deploy resources within a VPC to isolate them from public networks, controlling inbound and outbound traffic through security groups and network ACLs.
+- **Web Application Firewall (WAF):** Configure AWS WAF to protect your application from common web exploits and bots that may affect availability and security.
+- **DDoS Protection:** Leverage AWS Shield to safeguard against Distributed Denial of Service attacks, ensuring application availability.
 
 #### 4. Monitoring and Logging:
-- AWS CloudTrail: Enable CloudTrail to log all API calls, providing a comprehensive audit trail for security analysis and compliance auditing.
-- Amazon CloudWatch: Set up CloudWatch to monitor application metrics and configure alarms to detect anomalous activities or performance issues.
-- AWS Security Hub: Utilize Security Hub to get a unified view of security alerts and compliance status across AWS accounts.
+- **AWS CloudTrail:** Enable CloudTrail to log all API calls, providing a comprehensive audit trail for security analysis and compliance auditing.
+- **Amazon CloudWatch:** Set up CloudWatch to monitor application metrics and configure alarms to detect anomalous activities or performance issues.
+- **AWS Security Hub:** Utilize Security Hub to get a unified view of security alerts and compliance status across AWS accounts.
 
 #### 5. Compliance and Governance:
-- AWS Config: Use AWS Config to assess, audit, and evaluate the configurations of your AWS resources, ensuring compliance with internal policies and regulatory standards.
-- Regular Security Assessments: Conduct vulnerability assessments and penetration testing to identify and remediate security weaknesses.
+- **AWS Config:** Use AWS Config to assess, audit, and evaluate the configurations of your AWS resources, ensuring compliance with internal policies and regulatory standards.
+- **Regular Security Assessments:** Conduct vulnerability assessments and penetration testing to identify and remediate security weaknesses.
 
 #### 6. Incident Response:
 - Preparation: Develop and regularly update an incident response plan outlining roles, responsibilities, and procedures for handling security incidents.
-- Automation: Implement automated responses to everyday security events using AWS Lambda and AWS CloudFormation to reduce reaction times.
+- Automation: Implement automated responses to everyday security events using **AWS Lambda** and **AWS CloudFormation** to reduce reaction times.
 
 #### 7. Secure Software Development:
-- Code Reviews and Testing: Incorporate security reviews and testing into the development lifecycle to identify vulnerabilities early.
-- Secrets Management: Securely stores sensitive information such as API keys and passwords using AWS Secrets Manager or AWS Systems Manager Parameter Store.
+- **Code Reviews and Testing:** Incorporate security reviews and testing into the development lifecycle to identify vulnerabilities early.
+- **Secrets Management:** Securely stores sensitive information such as API keys and passwords using AWS Secrets Manager or AWS Systems Manager Parameter Store.
 
 By integrating these security practices, you can establish a resilient e-commerce platform that safeguards customer data and maintains trust. Please update your security measures regularly to adapt to evolving threats and ensure they comply with industry standards.
 
