@@ -3,102 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My E-Commerce Store</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Enroll in Our Program</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        input, select {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: #0073e6;
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #005bb5;
+        }
+        .success-message {
+            font-size: 18px;
+            color: #28a745;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <a href="index.html"><img src="images/logo.png" alt="Store Logo"></a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html">Cart</a></li>
-            </ul>
-        </nav>
+        <img src="t2s-logo.png" alt="T2S Logo">
+        <h1>Enroll in Our Program</h1>
     </header>
 
-    <main>
-        <section class="hero">
-            <img src="images/hero.jpg" alt="Hero Image">
-            <div class="hero-text">
-                <h1>Welcome to Our Store</h1>
-                <p>Discover the best products at unbeatable prices.</p>
-                <a href="products.html" class="btn">Shop Now</a>
-            </div>
-        </section>
+    <form id="enrollmentForm">
+        <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+        <input type="email" id="email" name="email" placeholder="Email Address" required>
+        <select id="course" name="course" required>
+            <option value="" disabled selected>Select a Course</option>
+            <option value="DevOps">DevOps</option>
+            <option value="Cloud">Cloud</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
 
-        <section class="categories">
-            <h2>Shop by Category</h2>
-            <div class="category-list">
-                <div class="category-item">
-                    <a href="category-electronics.html">
-                        <img src="images/category-electronics.jpg" alt="Electronics">
-                        <h3>Electronics</h3>
-                    </a>
-                </div>
-                <div class="category-item">
-                    <a href="category-fashion.html">
-                        <img src="images/category-fashion.jpg" alt="Fashion">
-                        <h3>Fashion</h3>
-                    </a>
-                </div>
-                <div class="category-item">
-                    <a href="category-home.html">
-                        <img src="images/category-home.jpg" alt="Home & Garden">
-                        <h3>Home & Garden</h3>
-                    </a>
-                </div>
-                <div class="category-item">
-                    <a href="category-toys.html">
-                        <img src="images/category-toys.jpg" alt="Toys">
-                        <h3>Toys</h3>
-                    </a>
-                </div>
-            </div>
-        </section>
+    <div id="successMessage" class="success-message" style="display: none;">
+        Thank you for enrolling! Your data has been successfully submitted.
+    </div>
 
-        <section class="featured-products">
-            <h2>Featured Products</h2>
-            <div class="product-list">
-                <div class="product-item">
-                    <a href="product1.html">
-                        <img src="images/product1.jpg" alt="Product 1">
-                        <h3>Product 1</h3>
-                        <p>$19.99</p>
-                    </a>
-                </div>
-                <div class="product-item">
-                    <a href="product2.html">
-                        <img src="images/product2.jpg" alt="Product 2">
-                        <h3>Product 2</h3>
-                        <p>$29.99</p>
-                    </a>
-                </div>
-                <div class="product-item">
-                    <a href="product3.html">
-                        <img src="images/product3.jpg" alt="Product 3">
-                        <h3>Product 3</h3>
-                        <p>$39.99</p>
-                    </a>
-                </div>
-                <div class="product-item">
-                    <a href="product4.html">
-                        <img src="images/product4.jpg" alt="Product 4">
-                        <h3>Product 4</h3>
-                        <p>$49.99</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
+    <script>
+        const form = document.getElementById('enrollmentForm');
+        const successMessage = document.getElementById('successMessage');
 
-    <footer>
-        <p>&copy; 2024 My E-Commerce Store. All rights reserved.</p>
-    </footer>
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent page reload
+
+            const data = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                course: document.getElementById('course').value
+            };
+
+            try {
+                const response = await fetch('<API_ENDPOINT>/enroll', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                    form.reset();
+                } else {
+                    alert('Error submitting the form. Please try again.');
+                }
+            } catch (error) {
+                alert('Unable to submit form. Please check your connection and try again.');
+            }
+        });
+    </script>
 </body>
 </html>
