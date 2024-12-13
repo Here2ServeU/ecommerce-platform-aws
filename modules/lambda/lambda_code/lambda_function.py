@@ -43,3 +43,4 @@ def handle_checkout(event):
             'statusCode': 500,
             'body': json.dumps({'message': 'Error processing order'})
         }
+# Placeholder Lambda function

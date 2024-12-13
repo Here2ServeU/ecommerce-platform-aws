@@ -7,4 +7,3 @@ variable "environment" {
   description = "Environment (dev, stage, prod)"
   type        = string
 }
-
