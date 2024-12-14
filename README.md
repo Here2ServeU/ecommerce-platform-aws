@@ -89,6 +89,17 @@ Test the e-commerce platform endpoints to ensure proper functionality.
 - Facilitates messaging and notifications for events like order confirmations.
 - Supports multiple communication protocols, including email and SMS.
 
+
+---
+## How It All Works Together:
+- A customer visits your **website (S3)** to browse items.
+- When they click “Add to Cart” or “Buy Now,” the request goes to the **front desk (API Gateway)**.
+- The **workers (Lambda)** process the request and check the **inventory (DynamoDB)** to ensure the item is available.
+- The **cash register (RDS)** records the transaction once the order is confirmed.
+- The **delivery system (SNS)** sends the customer a confirmation email.
+- The **security guard (IAM)** ensures everything happens securely.
+- The **traffic director (CloudFront)** ensures the website loads quickly for all customers.
+
 ---
 ## Clean Up
 To dismantle the infrastructure established by your Terraform configurations, follow these steps:
