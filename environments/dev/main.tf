@@ -53,7 +53,23 @@ module "lambda" {
   lambda_role_name    = var.lambda_role_name
 }
 
+# IAM Module
 module "iam" {
   source = "../../modules/iam"
   role_name = var.role_name
+}
+
+# Cloudfront Module
+module "cloudfront" {
+  source            = "../../modules/cloudfront"
+  bucket_name       = module.s3.bucket_name
+  bucket_domain_name = module.s3.bucket_domain_name
+  environment       = var.environment  # Add this line
+}
+
+# Cognito Module
+module "cognito" {
+  source             = "../../modules/cognito"
+  user_pool_name     = "t2s-user-pool"
+  identity_pool_name = "t2s-identity-pool"
 }
