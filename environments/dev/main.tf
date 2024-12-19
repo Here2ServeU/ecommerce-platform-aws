@@ -73,3 +73,9 @@ module "cognito" {
   user_pool_name     = "t2s-user-pool"
   identity_pool_name = "t2s-identity-pool"
 }
+
+module "api_gateway" {
+  source                = "../../modules/api_gateway"
+  api_name              = "t2s-api"
+  lambda_function_arn   = module.lambda.function_arn
+}
