@@ -74,6 +74,7 @@ module "cognito" {
   identity_pool_name = "t2s-identity-pool"
 }
 
+# API Module
 module "api_gateway" {
   source                = "../../modules/api_gateway"
   api_name              = "t2s-api"
