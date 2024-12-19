@@ -1,6 +1,7 @@
 import json
 import boto3
 import os
+import jwt
 from decimal import Decimal
 
 dynamodb = boto3.resource('dynamodb')
@@ -43,4 +44,14 @@ def handle_checkout(event):
             'statusCode': 500,
             'body': json.dumps({'message': 'Error processing order'})
         }
+
+def lambda_handler(event, context):
+    token = event['headers']['Authorization']
+    decoded_token = jwt.decode(token, options={"verify_signature": False})
+    user_email = decoded_token.get("email")
+    return {
+        "statusCode": 200,
+        "body": f"Welcome, {user_email}!"
+    }
+
 # Placeholder Lambda function
