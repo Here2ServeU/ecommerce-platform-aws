@@ -77,6 +77,7 @@ module "cognito" {
 # API Module
 module "api_gateway" {
   source                = "../../modules/api_gateway"
-  api_name              = "t2s-api"
+  api_name              = var.api_name
+  environment           = var.environment
   lambda_function_arn   = module.lambda.function_arn
 }
