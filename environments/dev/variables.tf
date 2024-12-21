@@ -78,3 +78,8 @@ variable "role_name" {
   type        = string
 }
 
+variable "api_name" {
+  description = "The name of our API"
+  type = string
+}
+
