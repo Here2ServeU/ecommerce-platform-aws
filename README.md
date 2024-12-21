@@ -2,6 +2,10 @@
 
 This guide provides step-by-step instructions on how to set up an e-commerce platform on Amazon Web Services (AWS) using Terraform. The deployment leverages various AWS services to create a scalable, secure, and efficient infrastructure.
 
+```png
+<img width="1064" alt="e-commerce" src="https://github.com/user-attachments/assets/7f48f768-58f8-487f-b123-30e5c6d243c9" />
+```
+
 ---
 ## Prerequisites
 - AWS Account: Ensure you have an active AWS account with appropriate permissions to create resources.
@@ -144,6 +148,44 @@ After you complete it, please verify through the AWS Management Console or AWS C
 - Data Persistence: Resources like S3 buckets might retain data even after deletion. Please make sure all data is properly backed up or removed as necessary.
 - State File Management: The Terraform state file (terraform.tfstate) records the infrastructure’s state. Post-destruction, this file will reflect the absence of managed resources.
 - Manual Modifications: If any resources were altered or removed manually outside of Terraform, update the state using commands like ***terraform state rm*** to prevent discrepancies.
+
+---
+## How Users Will Interact with Your E-Commerce Platform
+
+Here’s a step-by-step flow of how users interact with your e-commerce platform and the sequence of AWS services involved.
+
+#### Visualizing the Workflow
+
+Here’s a high-level diagram of the service interactions:
+
+1.	**Frontend:**
+- User → CloudFront → S3
+
+2.	**Form Submission:**
+- User → CloudFront → API Gateway → Lambda
+
+3.	**Data Processing:**
+- Lambda → DynamoDB (store real-time data)
+- Lambda → RDS (store relational data)
+
+4.	**Notification:**
+- Lambda → SNS → User
+
+5.	**Monitoring:**
+- CloudWatch/CloudTrail → Metrics and Logs
+
+#### Service Sequence
+- **Amazon S3** and **CloudFront:** Serve the frontend to the user.
+- **Amazon API Gateway:** Handle API requests from the front end.
+- **AWS Lambda:** Process the backend logic.
+- **Amazon DynamoDB:** Store NoSQL user data.
+- **Amazon RDS:** Store structured relational data.
+- **Amazon SNS:** Notify users with emails or SMS.
+- **Amazon Cognito** (if authentication is enabled): Authenticate and authorize user access.
+- **Amazon CloudWatch** and **CloudTrail:** Monitor and log the workflow.
+
+This sequence ensures a seamless and secure user experience while leveraging the power of AWS services to handle data processing, storage, and notification. 
+
 
 ---
 ## Robust Security Measures for Your E-Commerce Platform
