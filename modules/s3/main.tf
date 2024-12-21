@@ -50,16 +50,4 @@ resource "null_resource" "frontend_cleanup_versioned" {
   depends_on = [aws_s3_bucket.frontend]
 }
 
-# S3 Bucket with Cleanup Dependencies
-resource "aws_s3_bucket" "frontend" {
-  bucket = "t2s-dev-frontend"
 
-  lifecycle {
-    prevent_destroy = false
-  }
-
-  depends_on = [
-    null_resource.frontend_cleanup_non_versioned,
-    null_resource.frontend_cleanup_versioned
-  ]
-}
