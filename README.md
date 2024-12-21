@@ -2,10 +2,6 @@
 
 This guide provides step-by-step instructions on how to set up an e-commerce platform on Amazon Web Services (AWS) using Terraform. The deployment leverages various AWS services to create a scalable, secure, and efficient infrastructure.
 
-```png
-<img width="1064" alt="e-commerce" src="https://github.com/user-attachments/assets/7f48f768-58f8-487f-b123-30e5c6d243c9" />
-```
-
 ---
 ## Prerequisites
 - AWS Account: Ensure you have an active AWS account with appropriate permissions to create resources.
