@@ -20,34 +20,11 @@ resource "aws_s3_bucket_policy" "frontend_policy" {
   })
 }
 
-# Pre-Destroy Bucket Cleanup for Non-Versioned Buckets
-resource "null_resource" "frontend_cleanup_non_versioned" {
-  triggers = {
-    bucket_name = aws_s3_bucket.frontend.id
-  }
-
-  provisioner "local-exec" {
-    command = <<EOT
-      aws s3 rm s3://${aws_s3_bucket.frontend.id} --recursive || true
-    EOT
-  }
-
-  depends_on = [aws_s3_bucket.frontend]
+# Allow public bucket policies
+resource "aws_s3_bucket_public_access_block" "frontend_public_access" {
+  bucket                  = aws_s3_bucket.frontend.id
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
 }
-
-# Pre-Destroy Bucket Cleanup for Versioned Buckets
-resource "null_resource" "frontend_cleanup_versioned" {
-  triggers = {
-    bucket_name = aws_s3_bucket.frontend.id
-  }
-
-  provisioner "local-exec" {
-    command = <<EOT
-      aws s3api delete-objects --bucket ${aws_s3_bucket.frontend.id} --delete "$(aws s3api list-object-versions --bucket ${aws_s3_bucket.frontend.id} --query '{Objects: Versions[].{Key:Key,VersionId:VersionId}}')"
-    EOT
-  }
-
-  depends_on = [aws_s3_bucket.frontend]
-}
-
-
