@@ -26,7 +26,7 @@ resource "aws_api_gateway_integration" "post_enroll" {
   http_method             = aws_api_gateway_method.post_enroll.http_method
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = aws_lambda_function.backend.invoke_arn
+  uri                     = var.lambda_function_arn # Use the variable instead of a direct reference
 }
 
 # Deployment for the API
