@@ -29,10 +29,20 @@ resource "aws_api_gateway_integration" "post_enroll" {
   uri                     = var.lambda_function_arn # Use the variable instead of a direct reference
 }
 
-# Deployment for the API
+# API Gateway Stage
+resource "aws_api_gateway_stage" "stage" {
+  deployment_id = aws_api_gateway_deployment.deployment.id
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  stage_name    = var.environment
+
+  variables = {
+    lambda_function_arn = var.lambda_function_arn
+  }
+}
+
+# API Gateway Deployment
 resource "aws_api_gateway_deployment" "deployment" {
-  depends_on  = [aws_api_gateway_integration.post_enroll]
   rest_api_id = aws_api_gateway_rest_api.api.id
-  stage_name  = var.environment
+  depends_on  = [aws_api_gateway_integration.post_enroll]
 }
 
