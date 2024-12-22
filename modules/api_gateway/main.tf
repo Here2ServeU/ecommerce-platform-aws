@@ -26,7 +26,7 @@ resource "aws_api_gateway_integration" "post_enroll" {
   http_method             = aws_api_gateway_method.post_enroll.http_method
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = var.lambda_function_arn # Use the variable instead of a direct reference
+  uri                     = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${var.lambda_function_arn}/invocations"
 }
 
 # API Gateway Stage
