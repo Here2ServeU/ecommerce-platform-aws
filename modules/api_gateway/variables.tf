@@ -12,3 +12,8 @@ variable "lambda_function_arn" {
   description = "ARN of the Lambda function to integrate with"
   type        = string
 }
+
+variable "region" {
+  description = "AWS region for the API Gateway deployment"
+  type        = string
+}
