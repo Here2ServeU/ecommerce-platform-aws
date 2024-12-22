@@ -1,61 +1,76 @@
 variable "aws_region" {
-  default = "us-east-1"
+  description = "AWS region for the deployment"
+  type        = string
 }
 
 variable "bucket_name" {
-  default = "t2s-dev-frontend"
+  description = "Name of the S3 bucket"
+  type        = string
 }
 
 variable "dynamodb_table_name" {
-  default = "t2s-dev-table"
+  description = "Name of the DynamoDB table"
+  type        = string
 }
 
 variable "lambda_iam_role_arn" {
-  default = "arn:aws:iam::123456789012:role/lambda-execution-role"
+  description = "IAM role ARN for the Lambda function"
+  type        = string
 }
 
 variable "rds_allocated_storage" {
-  default = 20
+  description = "Allocated storage size for the RDS instance"
+  type        = number
 }
 
 variable "rds_engine" {
-  default = "mysql"
+  description = "Database engine type for RDS (e.g., mysql, postgres)"
+  type        = string
 }
 
 variable "rds_engine_version" {
-  default = "8.0"
+  description = "Database engine version for RDS"
+  type        = string
 }
 
 variable "rds_instance_class" {
-  default = "db.t3.micro"
+  description = "Instance class for the RDS database"
+  type        = string
 }
 
 variable "rds_db_name" {
-  default = "t2s_dev_db"
+  description = "Name of the RDS database"
+  type        = string
 }
 
 variable "rds_username" {
-  default = "admin"
+  description = "Username for the RDS database"
+  type        = string
 }
 
 variable "rds_password" {
-  default = "securepassword"
+  description = "Password for the RDS database"
+  type        = string
+  sensitive   = true
 }
 
 variable "rds_publicly_accessible" {
-  default = false
+  description = "Whether the RDS instance should be publicly accessible"
+  type        = bool
 }
 
 variable "sns_topic_name" {
-  default = "t2s-dev-sns-topic"
+  description = "Name of the SNS topic"
+  type        = string
 }
 
 variable "environment" {
-  default = "dev"
+  description = "Deployment environment (e.g., dev, stage, prod)"
+  type        = string
 }
 
 variable "lambda_runtime" {
-  description = "The runtime environment for the Lambda function (e.g., python3.8, nodejs14.x)"
+  description = "Runtime environment for the Lambda function (e.g., python3.8, nodejs14.x)"
   type        = string
 }
 
@@ -63,6 +78,7 @@ variable "lambda_role_name" {
   description = "The name of the IAM role for the Lambda function"
   type        = string
 }
+
 variable "lambda_filename" {
   description = "The path to the function's deployment package within the local filesystem"
   type        = string
@@ -79,7 +95,6 @@ variable "role_name" {
 }
 
 variable "api_name" {
-  description = "The name of our API"
-  type = string
+  description = "The name of the API Gateway"
+  type        = string
 }
-
