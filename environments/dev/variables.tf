@@ -83,7 +83,3 @@ variable "api_name" {
   type = string
 }
 
-variable "aws_region" {
-  description = "AWS region for the deployment"
-  type        = string
-}
