@@ -80,4 +80,5 @@ module "api_gateway" {
   api_name              = var.api_name
   environment           = var.environment
   lambda_function_arn   = module.lambda.function_arn
+  region                = var.aws_region
 }
