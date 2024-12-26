@@ -13,6 +13,8 @@ aws s3 rm s3://$S3_BUCKET --recursive
 echo "Deleting S3 bucket..."
 aws s3api delete-bucket --bucket $S3_BUCKET --region $REGION
 
+# If you have issues deleting the S3 bucket, you can do it on the Console. 
+
 # Delete DynamoDB table
 echo "Deleting DynamoDB table..."
 aws dynamodb delete-table --table-name $DYNAMODB_TABLE
