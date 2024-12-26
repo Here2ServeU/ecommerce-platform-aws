@@ -1,10 +1,10 @@
 terraform {
   backend "s3" {
-    bucket         = "t2s-ecommerce-tf-state"
-    key            = "ecommerce/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "t2s-terraform-locks"
-    encrypt        = true
+    bucket         = var.backend_bucket_name
+    key            = var.backend_key
+    region         = var.backend_region
+    dynamodb_table = var.backend_dynamodb_table
+    encrypt        = var.backend_encrypt
   }
 }
 
@@ -50,13 +50,13 @@ module "sns" {
 # Lambda Module
 module "lambda" {
   source              = "../../modules/lambda"
-  function_name       = "t2s-backend-dev-function"
+  function_name       = var.lambda_function_name
   iam_role_arn        = module.iam.role_arn
   dynamodb_table_name = module.dynamodb.table_name
   rds_endpoint        = module.rds.db_endpoint
   sns_topic_arn       = module.sns.topic_arn
   environment         = var.environment
-  lambda_source_dir   = "../lambda_code"
+  lambda_source_dir   = var.lambda_source_dir
   runtime             = var.lambda_runtime
   filename            = var.lambda_filename
   handler             = var.lambda_handler
@@ -65,7 +65,7 @@ module "lambda" {
 
 # IAM Module
 module "iam" {
-  source = "../../modules/iam"
+  source    = "../../modules/iam"
   role_name = var.role_name
 }
 
@@ -74,21 +74,22 @@ module "cloudfront" {
   source            = "../../modules/cloudfront"
   bucket_name       = module.s3.bucket_name
   bucket_domain_name = module.s3.bucket_domain_name
-  environment       = var.environment  # Add this line
+  environment       = var.environment
 }
 
 # Cognito Module
 module "cognito" {
   source             = "../../modules/cognito"
-  user_pool_name     = "t2s-user-pool"
-  identity_pool_name = "t2s-identity-pool"
+  user_pool_name     = var.cognito_user_pool_name
+  identity_pool_name = var.cognito_identity_pool_name
+  environment        = var.environment
 }
 
 # API Module
 module "api_gateway" {
-  source                = "../../modules/api_gateway"
-  api_name              = var.api_name
-  environment           = var.environment
-  lambda_function_arn   = module.lambda.function_arn
-  region                = var.aws_region
+  source              = "../../modules/api_gateway"
+  api_name            = var.api_name
+  environment         = var.environment
+  lambda_function_arn = module.lambda.function_arn
+  region              = var.aws_region
 }
