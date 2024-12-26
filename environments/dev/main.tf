@@ -1,3 +1,13 @@
+terraform {
+  backend "s3" {
+    bucket         = "t2s-ecommerce-tf-state"
+    key            = "ecommerce/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "t2s-terraform-locks"
+    encrypt        = true
+  }
+}
+
 provider "aws" {
   region = var.aws_region
 }
