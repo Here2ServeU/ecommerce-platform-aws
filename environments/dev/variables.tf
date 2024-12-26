@@ -1,23 +1,53 @@
+# Terraform Backend Variables
+variable "backend_bucket_name" {
+  description = "Name of the S3 bucket used for the backend state"
+  type        = string
+}
+
+variable "backend_key" {
+  description = "Path to the backend state file"
+  type        = string
+}
+
+variable "backend_region" {
+  description = "AWS region for the backend"
+  type        = string
+}
+
+variable "backend_dynamodb_table" {
+  description = "DynamoDB table for state locking"
+  type        = string
+}
+
+variable "backend_encrypt" {
+  description = "Whether to enable encryption for the backend"
+  type        = bool
+}
+
+# General Variables
 variable "aws_region" {
   description = "AWS region for the deployment"
   type        = string
 }
 
+variable "environment" {
+  description = "Deployment environment (e.g., dev, stage, prod)"
+  type        = string
+}
+
+# S3 Variables
 variable "bucket_name" {
   description = "Name of the S3 bucket"
   type        = string
 }
 
+# DynamoDB Variables
 variable "dynamodb_table_name" {
   description = "Name of the DynamoDB table"
   type        = string
 }
 
-variable "lambda_iam_role_arn" {
-  description = "IAM role ARN for the Lambda function"
-  type        = string
-}
-
+# RDS Variables
 variable "rds_allocated_storage" {
   description = "Allocated storage size for the RDS instance"
   type        = number
@@ -59,42 +89,62 @@ variable "rds_publicly_accessible" {
   type        = bool
 }
 
+# SNS Variables
 variable "sns_topic_name" {
   description = "Name of the SNS topic"
   type        = string
 }
 
-variable "environment" {
-  description = "Deployment environment (e.g., dev, stage, prod)"
+# Lambda Variables
+variable "lambda_function_name" {
+  description = "Name of the Lambda function"
+  type        = string
+}
+
+variable "lambda_source_dir" {
+  description = "Path to the directory containing Lambda function code"
   type        = string
 }
 
 variable "lambda_runtime" {
-  description = "Runtime environment for the Lambda function (e.g., python3.8, nodejs14.x)"
-  type        = string
-}
-
-variable "lambda_role_name" {
-  description = "The name of the IAM role for the Lambda function"
+  description = "Runtime environment for the Lambda function"
   type        = string
 }
 
 variable "lambda_filename" {
-  description = "The path to the function's deployment package within the local filesystem"
+  description = "Name of the Lambda deployment package"
   type        = string
 }
 
 variable "lambda_handler" {
-  description = "The function entry point in your code"
+  description = "The entry point handler for the Lambda function"
   type        = string
 }
 
+variable "lambda_role_name" {
+  description = "Name of the IAM role for the Lambda function"
+  type        = string
+}
+
+# IAM Variables
 variable "role_name" {
-  description = "The name of the IAM role to create"
+  description = "Name of the IAM role"
   type        = string
 }
 
+# Cognito Variables
+variable "cognito_user_pool_name" {
+  description = "Name of the Cognito User Pool"
+  type        = string
+}
+
+variable "cognito_identity_pool_name" {
+  description = "Name of the Cognito Identity Pool"
+  type        = string
+}
+
+# API Gateway Variables
 variable "api_name" {
-  description = "The name of the API Gateway"
+  description = "Name of the API Gateway"
   type        = string
 }
