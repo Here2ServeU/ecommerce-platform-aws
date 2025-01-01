@@ -1,11 +1,15 @@
 terraform {
   backend "s3" {
-    bucket         = "t2s-ecommerce-tf-state"          # Static value for the S3 bucket name
-    key            = "ecommerce/terraform.tfstate"     # Static value for the state file path
-    region         = "us-east-1"                       # Static value for the AWS region
-    dynamodb_table = "t2s-terraform-locks"             # Static value for the DynamoDB locking table
-    encrypt        = true                              # Static value for enabling encryption
+    bucket         = "t2s-ecommerce-tf-state"          # Replace with the actual bucket name
+    key            = "ecommerce/terraform.tfstate"     # Replace with the actual state file key
+    region         = "us-east-1"                       # Replace with the actual region
+    dynamodb_table = "t2s-terraform-locks"             # Replace with the actual DynamoDB table
+    encrypt        = true                              # Encryption enabled for security
   }
+}
+
+provider "aws" {
+  region = var.aws_region
 }
 
 provider "aws" {
@@ -82,6 +86,7 @@ module "cognito" {
   source             = "../../modules/cognito"
   user_pool_name     = var.cognito_user_pool_name
   identity_pool_name = var.cognito_identity_pool_name
+  environment        = var.environment
 }
 
 # API Module
