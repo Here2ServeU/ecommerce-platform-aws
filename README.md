@@ -108,8 +108,6 @@ To dismantle the infrastructure established by your Terraform configurations, fo
 - Empty the S3 Bucket:
 ```bash
 aws s3 rm s3://t2s-dev-frontend --recursive
-aws s3api delete-objects --bucket t2s-dev-frontend \
---delete "$(aws s3api list-object-versions --bucket t2s-dev-frontend --query '{Objects: Versions[].{Key:Key,VersionId:VersionId}}')"
 ```
 
 - Open your terminal and change to the directory containing your Terraform configuration files:
